@@ -43,7 +43,8 @@ fun MenuScreen(modifier: Modifier = Modifier, navController: NavController) {
                 .align(Alignment.Center)
         ){
             Button(
-                onClick = { navController.navigate("perfil") },
+                // Parâmetros "nome" e "id" implementados na rota da tela de perfil
+                onClick = { navController.navigate("perfil/Enzo Wakao/320474") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)
             ) {
@@ -55,7 +56,8 @@ fun MenuScreen(modifier: Modifier = Modifier, navController: NavController) {
             }
             Spacer(modifier = Modifier.height(16.dp))
             Button(
-                onClick = { navController.navigate("pedidos") },
+                // Atribuindo valor ao parãmetro opcional
+                onClick = { navController.navigate("pedidos?cliente = Cliente XPTO") },
                 colors = ButtonDefaults.buttonColors(Color.White),
                 modifier = Modifier.size(width = 200.dp, height = 48.dp)
             ) {

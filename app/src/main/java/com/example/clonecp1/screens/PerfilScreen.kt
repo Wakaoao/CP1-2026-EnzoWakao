@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController) {
+// Adição dos novos parâmetros obrigatórios "nome" e "id"
+fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController, nome: String, id: Int) {
 
     Box (
         modifier = modifier
@@ -26,7 +27,8 @@ fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController) {
             .padding(32.dp)
     ) {
         Text(
-            text = "PERFIL",
+            // Adicionando o nome do usuário e seu id no texto principal
+            text = "PERFIL - $nome - ID do Usuário: $id",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White

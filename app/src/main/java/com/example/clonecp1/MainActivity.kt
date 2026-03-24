@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.clonecp1.ui.theme.CloneCP1Theme
 import com.example.clonecp1.screens.LoginScreen
 import com.example.clonecp1.screens.MenuScreen
@@ -36,11 +38,34 @@ class MainActivity : ComponentActivity() {
                         composable(route = "menu") {
                             MenuScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
-                        composable(route = "pedidos") {
-                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController)
+                        composable(
+                            // Adição do parãmetro opcional "cliente" na rota da tela de pedidos
+                            route = "pedidos?cliente={cliente}",
+                            // Busca pelo valor do parâmetro, caso não haja, valor padrão será "Cliente padrão"
+                            arguments = listOf(navArgument("cliente"){
+                                defaultValue = "Cliente Padrão"
+                            })
+                        ) {
+                            // Novo parãmetro "cliente" implementado
+                            PedidosScreen(modifier = Modifier.padding(innerPadding),
+                                navController,
+                                it.arguments?.getString("cliente"))
                         }
-                        composable(route = "perfil") {
-                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController)
+                        // Adicão do parâmetro obrigatório "nome" na rota da tela de perfil
+                        composable(
+                            route = "perfil/{nome}/{id}",
+                            arguments = listOf(
+                                navArgument("nome") {type = NavType.StringType},
+                                navArgument("id") {type = NavType.IntType}
+                            )
+                        ) {
+
+                            // Atribuindo valor recebido ao parâmetro, usando como padrão "Usuário Padrão"
+                            val nome: String? = it.arguments?.getString("nome", "Usuário Padrão")
+                            // Atribuindo valor recebido ao parâmetro, usando como 0 padrão
+                            val telefone: Int? = it.arguments?.getInt("id", 0)
+                            // Novos parâmetros "nome" e "id" implementados
+                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController, nome!!, id!!)
                         }
                     }
                 }

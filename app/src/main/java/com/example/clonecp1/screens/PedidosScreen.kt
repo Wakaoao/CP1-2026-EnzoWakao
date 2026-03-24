@@ -17,7 +17,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @Composable
-fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController) {
+// Adição do novo parâmetro opcional "cliente"
+fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, cliente: String?) {
 
     Box (
         modifier = modifier
@@ -26,7 +27,8 @@ fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController) {
             .padding(32.dp)
     ) {
         Text(
-            text = "PEDIDOS",
+            // Adicionando o cliente responsável pelo pedido no texto principal
+            text = "PEDIDOS - $cliente",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White
