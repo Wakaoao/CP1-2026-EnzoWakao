@@ -2,24 +2,24 @@
 
 ## Passagem de parâmetros obrigatórios na tela de Perfil
 
-1. **Adição de um novo parãmetro obrigatório "nome" na PerfilScreen**
+### 1. **Adição de um novo parãmetro obrigatório "nome" na PerfilScreen**
 - Alteração feita na classe PerfilScreen, na function PerfilScreen
 ```kotlin
 fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController, nome: String) {}
 ```
-2. **Adicionando o nome do usuário no texto principal da tela**
+### 2. **Adicionando o nome do usuário no texto principal da tela**
 - Ainda na PerfilScreen, no Text principal
 ```kotlin
 text = "PERFIL - $nome"
 ```
 
-3. **Parâmetro "nome" implementado na rota para a tela de perfil**
+### 3. **Parâmetro "nome" implementado na rota para a tela de perfil**
 - Alteração feita na classe MenuScreen, no Button responsável pela navegação para a classe PerfilScreen
 ```kotlin
 onClick = { navController.navigate("perfil/Enzo Wakao") }
 ```
 
-4. **Alterações feitas na classe MainActivity**
+### 4. **Alterações feitas na classe MainActivity**
 - Adicão do parâmetro obrigatório "nome" na rota da tela de perfil
 ```kotlin
 composable(route = "perfil/{nome}") {}
@@ -40,19 +40,19 @@ composable(route = "perfil/{nome}") {
 
 ## Passagen de parâmetros opcionais na tela de Pedidos
 
-1. **Adição de um novo parãmetro opcional "cliente" na PedidosScreen**
+### 1. **Adição de um novo parãmetro opcional "cliente" na PedidosScreen**
 - Alterações feitas na classe MenuScreen, na function MenuScreen
 ```kotlin
 fun PedidosScreen(modifier: Modifier = Modifier, navController: NavController, cliente: String?) {}
 ```
 
-2. **Adicionando o nome do usuário no texto principal da tela**
+### 2. **Adicionando o nome do usuário no texto principal da tela**
 - Ainda na PedidosScreen, no Text principal
 ```kotlin
 text = "PEDIDOS - $cliente"
 ```
 
-3. **Alterações feitas na classe MainActivity**
+### 3. **Alterações feitas na classe MainActivity**
 - Adicão do parâmetro opcional "cliente" na rota da tela de pedidos
 ```kotlin
 composable(route = "pedidos?cliente={cliente}") {}
@@ -83,7 +83,7 @@ composable(
 
 ## Inserindo valor ao parâmetro opcional na tela de Pedidos
 
-1. **Alteração feita na classe MenuScreen**
+### 1. **Alteração feita na classe MenuScreen**
 - No Button de navegação para a tela de pedidos, atribuir valor ao parãmetro opcional
 ```kotlin
 Button(
@@ -93,36 +93,36 @@ Button(
 
 ## Passagem de múltiplos parâmetros
 
-1. **Adicionando mais um parãmetro obrigatório "id" na PerfilScreen**
+### 1. **Adicionando mais um parãmetro obrigatório "id" na PerfilScreen**
 - Alteração feita na classe PerfilScreen, na function PerfilScreen
 ```kotlin
 fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController, nome: String, id: Int) {}
 ```
 
-2. **Adicionando o id do usuário no texto principal da tela**
+### 2. **Adicionando o id do usuário no texto principal da tela**
 - Ainda na PerfilScreen, no Text principal
 ```kotlin
 text = "PERFIL - $nome - ID do Usuário: $id"
 ```
 
-3. **Parâmetro "id" implementado na rota para a tela de perfil**
+### 3. **Parâmetro "id" implementado na rota para a tela de perfil**
 - Alteração feita na classe MenuScreen, no Button responsável pela navegação para a classe PerfilScreen
 ```kotlin
 onClick = { navController.navigate("perfil/Enzo Wakao/320474") }
 ```
 
-4. **Alterações feitas na classe MainActivity**
+### 4. **Alterações feitas na classe MainActivity**
 - Adicão do parâmetro obrigatório "nome" na rota da tela de perfil
 ```kotlin
 composable(route = "perfil/{nome}/{id}") {}
 ```
-- SADSDSADASDASDASDSADASDAS
+- Arguments dos novos parâmetros adicionados 
 ```kotlin
 composable(
-    route = "perfil/{nome}/{idade}",
+    route = "perfil/{nome}/{id}",
     arguments = listOf(
         navArgument("nome") { type = NavType.StringType },
-        navArgument("idade") { type = NavType.IntType }
+        navArgument("id") { type = NavType.IntType }
     )
 ) {}
 ```
