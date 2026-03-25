@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                                 navController,
                                 it.arguments?.getString("cliente"))
                         }
-                        // Adicão do parâmetro obrigatório "nome" na rota da tela de perfil
+                        // Adicão dos parâmetro obrigatórios "nome" e "id" na rota da tela de perfil
                         composable(
                             route = "perfil/{nome}/{id}",
                             arguments = listOf(
@@ -62,8 +62,8 @@ class MainActivity : ComponentActivity() {
 
                             // Atribuindo valor recebido ao parâmetro, usando como padrão "Usuário Padrão"
                             val nome: String? = it.arguments?.getString("nome", "Usuário Padrão")
-                            // Atribuindo valor recebido ao parâmetro, usando como 0 padrão
-                            val telefone: Int? = it.arguments?.getInt("id", 0)
+                            // Atribuindo valor recebido ao parâmetro, usando 0 como padrão
+                            val id: Int? = it.arguments?.getInt("id", 0)
                             // Novos parâmetros "nome" e "id" implementados
                             PerfilScreen(modifier = Modifier.padding(innerPadding), navController, nome!!, id!!)
                         }

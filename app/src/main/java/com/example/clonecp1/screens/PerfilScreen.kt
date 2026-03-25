@@ -27,7 +27,7 @@ fun PerfilScreen(modifier: Modifier = Modifier, navController: NavController, no
             .padding(32.dp)
     ) {
         Text(
-            // Adicionando o nome do usuário e seu id no texto principal
+            // Adicionando o nome do usuário e seu id no texto principal da tela
             text = "PERFIL - $nome - ID do Usuário: $id",
             fontSize = 24.sp,
             fontWeight = FontWeight.Bold,
